@@ -23,6 +23,9 @@ const config = {
 }
 
 //TODO: respond to GET requests on "/" with the config object above
+app.get("/",(req,res)=>{
+  res.json(config)
+})
 
 //TODO: respond to POST requests on "/start". Your response itself is ignored, but must have status code "200"
 //      the request body will contain objects representing the game instance, game board state, and your snake
