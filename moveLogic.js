@@ -27,15 +27,15 @@ export default function move(gameState){
     // gameState.board contains an object representing the game board including its width and height
     // https://docs.battlesnake.com/api/objects/board
     
-    if (myHead.x++ > gameState.board.x){
+    if (myHead.x > gameState.board.width){
         moveSafety.right = false;
-    } else if (myHead.x-- < gameState.board.x){
+    } else if (myHead.x < gameState.board.width){
         moveSafety.left = false; 
     }
 
-    if(myHead.y++ > gameState.board.y){
+    if(myHead.y > gameState.board.height){
         moveSafety.up = false;
-    } else if (myHead.x-- < gameState.board.x){
+    } else if (myHead.x < gameState.board.height){
         moveSafety.down = false;
     }
 
