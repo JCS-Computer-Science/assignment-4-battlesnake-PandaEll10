@@ -1,3 +1,5 @@
+import e from "express";
+
 export default function move(gameState){
     let moveSafety = {
         up: true,
@@ -9,7 +11,7 @@ export default function move(gameState){
     // We've included code to prevent your Battlesnake from moving backwards
     const myHead = gameState.you.body[0];
     const myNeck = gameState.you.body[1];
-    
+
     if (myNeck.x < myHead.x) {        // Neck is left of head, don't move left
         moveSafety.left = false;
         
@@ -27,23 +29,33 @@ export default function move(gameState){
     // gameState.board contains an object representing the game board including its width and height
     // https://docs.battlesnake.com/api/objects/board
     
-    if (myHead.x > gameState.board.width){
+    if (myHead.x == 10){
         moveSafety.right = false;
-    } else if (myHead.x < gameState.board.width){
+    } else if (myHead.x == 0){
         moveSafety.left = false; 
     }
 
-    if(myHead.y > gameState.board.height){
-        moveSafety.up = false;
-    } else if (myHead.x < gameState.board.height){
+    if(myHead.y == 0){
         moveSafety.down = false;
+    } else if (myHead.y == 10){
+        moveSafety.up = false;
     }
 
 
     // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
     // gameState.you contains an object representing your snake, including its coordinates
     // https://docs.battlesnake.com/api/objects/battlesnake
-    
+   
+    if(myHead.x ++ == myNeck ){
+        moveSafety.right == false;
+    } else if(myHead.x--==myNeck){
+        moveSafety.left==false;
+    }
+    if(myHead.y+1==myNeck){
+        moveSafety.up==false;
+    }else if(myHead.y-1==myNeck){
+        moveSafety.down==false;
+    }
     
     // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
     // gameState.board.snakes contains an array of enemy snake objects, which includes their coordinates
