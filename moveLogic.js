@@ -11,7 +11,7 @@ export default function move(gameState){
     // We've included code to prevent your Battlesnake from moving backwards
     const myHead = gameState.you.body[0];
     const myNeck = gameState.you.body[1];
-
+    
     if (myNeck.x < myHead.x) {        // Neck is left of head, don't move left
         moveSafety.left = false;
         
@@ -45,22 +45,42 @@ export default function move(gameState){
     // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
     // gameState.you contains an object representing your snake, including its coordinates
     // https://docs.battlesnake.com/api/objects/battlesnake
-   
-    if(myHead.x ++ == myNeck ){
-        moveSafety.right == false;
-    } else if(myHead.x--==myNeck){
-        moveSafety.left==false;
+    for (let i=0; i<gameState.you.body.length; i++){
+const myBody = gameState.you.body[i];
+if(myHead.x+1 == myBody.x && myHead.y==myBody.y){
+        moveSafety.right = false;
+    } else if(myHead.x-1==myBody.x && myHead.y==myBody.y){
+        moveSafety.left=false;
     }
-    if(myHead.y+1==myNeck){
-        moveSafety.up==false;
-    }else if(myHead.y-1==myNeck){
-        moveSafety.down==false;
+    if(myHead.y+1==myBody.y && myHead.x==myBody.x){
+        moveSafety.up=false;
+    }else if(myHead.y-1==myBody.y && myHead.x==myBody.x){
+        moveSafety.down=false;
     }
+    }
+    
+    
+    
+    
     
     // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
     // gameState.board.snakes contains an array of enemy snake objects, which includes their coordinates
     // https://docs.battlesnake.com/api/objects/battlesnake
-    
+    for (let i=0; i<gameState.snakes; i++){
+        for (let i=0; i<gameState.snakes.body.length; i++){
+        const enemyBody = gameState.snakes.body[i];
+        if(myHead.x+1 == enemyBodyBody.x && myHead.y==enemyBodyBody.y){
+                moveSafety.right = false;
+            } else if(myHead.x-1==enemyBodyBody.x && myHead.y==enemyBodyBody.y){
+                moveSafety.left=false;
+            }
+            if(myHead.y+1==enemyBodyBody.y && myHead.x==enemyBodyBody.x){
+                moveSafety.up=false;
+            }else if(myHead.y-1==enemyBodyBody.y && myHead.x==enemyBodyBody.x){
+                moveSafety.down=false;
+            }
+        }
+            }
     // Are there any safe moves left?
     
     //Object.keys(moveSafety) returns ["up", "down", "left", "right"]
