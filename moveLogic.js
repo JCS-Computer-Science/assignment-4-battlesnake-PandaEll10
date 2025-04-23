@@ -66,20 +66,34 @@ if(myHead.x+1 == myBody.x && myHead.y==myBody.y){
     // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
     // gameState.board.snakes contains an array of enemy snake objects, which includes their coordinates
     // https://docs.battlesnake.com/api/objects/battlesnake
-    for (let i=0; i<gameState.snakes; i++){
-        for (let i=0; i<gameState.snakes.body.length; i++){
-        const enemyBody = gameState.snakes.body[i];
-        if(myHead.x+1 == enemyBodyBody.x && myHead.y==enemyBodyBody.y){
-                moveSafety.right = false;
-            } else if(myHead.x-1==enemyBodyBody.x && myHead.y==enemyBodyBody.y){
-                moveSafety.left=false;
+    for (let i=0; i<gameState.board.snakes.length; i++){
+        for (let j=0; j<gameState.board.snakes[i].body.length; j++){
+            let enemyBody = gameState.board.snakes[i].body[j];
+            if(myHead.x+1 == enemyBody.x && myHead.y==enemyBody.y){
+                    moveSafety.right = false;
+                } else if(myHead.x-1==enemyBody.x && myHead.y==enemyBody.y){
+                    moveSafety.left=false;
+                }
+                if(myHead.y+1==enemyBody.y && myHead.x==enemyBody.x){
+                    moveSafety.up=false;
+                }else if(myHead.y-1==enemyBody.y && myHead.x==enemyBody.x){
+                    moveSafety.down=false;
+                }
+                }
+                
             }
-            if(myHead.y+1==enemyBodyBody.y && myHead.x==enemyBodyBody.x){
-                moveSafety.up=false;
-            }else if(myHead.y-1==enemyBodyBody.y && myHead.x==enemyBodyBody.x){
-                moveSafety.down=false;
-            }
-        }
+            for (let i=0; i<gameState.board.snakes.length; i++){
+                let enemyhead = gameState.board.snakes[i].body[0];
+                if(myHead.x+1 == enemyhead.x-1 && myHead.y==enemyhead.y){
+                    moveSafety.right = false;
+                } else if(myHead.x-1==enemyhead.x+1 && myHead.y==enemyhead.y){
+                    moveSafety.left=false;
+                }
+                if(myHead.y+1==enemyhead.y-1 && myHead.x==enemyhead.x){
+                    moveSafety.up=false;
+                }else if(myHead.y-1==enemyhead.y+1 && myHead.x==enemyhead.x){
+                    moveSafety.down=false;
+                }
             }
     // Are there any safe moves left?
     
