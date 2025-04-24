@@ -88,8 +88,7 @@ if(myHead.x+1 == myBody.x && myHead.y==myBody.y){
                     moveSafety.right = false;
                 } else if(myHead.x-1==enemyhead.x+1 && myHead.y==enemyhead.y){
                     moveSafety.left=false;
-                }
-                if(myHead.y+1==enemyhead.y-1 && myHead.x==enemyhead.x){
+                }else if(myHead.y+1==enemyhead.y-1 && myHead.x==enemyhead.x){
                     moveSafety.up=false;
                 }else if(myHead.y-1==enemyhead.y+1 && myHead.x==enemyhead.x){
                     moveSafety.down=false;
