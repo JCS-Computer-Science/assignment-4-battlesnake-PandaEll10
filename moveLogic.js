@@ -94,6 +94,22 @@ if(myHead.x+1 == myBody.x && myHead.y==myBody.y){
                     moveSafety.down=false;
                 }
             }
+            for (let i=0; i<gameState.board.snakes.length; i++){
+                let enemyhead = gameState.board.snakes[i].body[0];
+                if(myHead.x+1 == enemyhead.x && myHead.y+1==enemyhead.y){
+                    moveSafety.right = false;
+                    moveSafety.up = false;
+                } else if(myHead.x+1 == enemyhead.x && myHead.y-1==enemyhead.y){
+                    moveSafety.right=false;
+                    moveSafety.down=false;
+                }else if(myHead.x-1 == enemyhead.x && myHead.y+1==enemyhead.y){
+                    moveSafety.up=false;
+                    moveSafety.left=false;
+                }else if(myHead.x-1 == enemyhead.x && myHead.y-1==enemyhead.y){
+                    moveSafety.down=false;
+                    moveSafety.left=false;
+                }
+            }
     // Are there any safe moves left?
     
     //Object.keys(moveSafety) returns ["up", "down", "left", "right"]
@@ -110,6 +126,7 @@ if(myHead.x+1 == myBody.x && myHead.y==myBody.y){
     
     // TODO: Step 4 - Move towards food instead of random, to regain health and survive longer
     // gameState.board.food contains an array of food coordinates https://docs.battlesnake.com/api/objects/board
+
     
     console.log(`MOVE ${gameState.turn}: ${nextMove}`)
     return { move: nextMove };
