@@ -111,19 +111,6 @@ if(myHead.x+1 == myBody.x && myHead.y==myBody.y){
                 }
             }
 
-            for (let i=0; i<gameState.you.body.length; i++){
-                const myBody = gameState.you.body[i];
-                if(myHead.x+2 == myBody.x && myHead.y==myBody.y){
-                        moveSafety.right = false;
-                    } else if(myHead.x-2==myBody.x && myHead.y==myBody.y){
-                        moveSafety.left=false;
-                    }
-                    if(myHead.y+2==myBody.y && myHead.x==myBody.x){
-                        moveSafety.up=false;
-                    }else if(myHead.y-2==myBody.y && myHead.x==myBody.x){
-                        moveSafety.down=false;
-                    }
-                    }
     // Are there any safe moves left?
     
     //Object.keys(moveSafety) returns ["up", "down", "left", "right"]
